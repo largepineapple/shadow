@@ -1,0 +1,90 @@
+{
+  "case_id": "req-risk",
+  "mode": "mock",
+  "model": "deterministic-mock-no-LLM",
+  "started_at": "2026-10-28T11:37:55.172268+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "action": "get_material",
+      "arguments": {
+        "material_id": "M03"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "id": "M03",
+          "title": "Synthetic material 3",
+          "duration_seconds": 30,
+          "copyright_status": "prohibited",
+          "sensitive_flags": [],
+          "review_notes": "Synthetic demo"
+        },
+        "error": null
+      },
+      "next_action": "check_rules",
+      "decision_basis": ""
+    },
+    {
+      "step": 2,
+      "action": "check_rules",
+      "arguments": {
+        "material_id": "M03"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "review_status": "blocked",
+          "risk_reasons": [
+            {
+              "rule_id": "R_COPYRIGHT",
+              "reason": "Copyright prohibits scheduling"
+            }
+          ],
+          "missing_fields": []
+        },
+        "error": null
+      },
+      "next_action": "finish",
+      "decision_basis": ""
+    },
+    {
+      "step": 3,
+      "action": "finish",
+      "arguments": {
+        "decision_basis": "Deterministic mock policy finished from observed tool results"
+      },
+      "observation_summary": {
+        "ok": true
+      },
+      "next_action": null,
+      "decision_basis": "Deterministic mock policy finished from observed tool results"
+    }
+  ],
+  "published": false,
+  "final_status": "blocked",
+  "finished_at": "2026-10-28T11:37:55.176489+00:00",
+  "result": {
+    "request_id": "req-risk",
+    "status": "blocked",
+    "materials": [
+      {
+        "material_id": "M03",
+        "review_status": "blocked",
+        "risk_reasons": [
+          {
+            "rule_id": "R_COPYRIGHT",
+            "reason": "Copyright prohibits scheduling"
+          }
+        ],
+        "requested_time": "2026-11-03T20:00:00+08:00",
+        "suggested_time": null,
+        "confirmation_items": [],
+        "draft_status": "not_saved",
+        "draft_id": null
+      }
+    ],
+    "published": false,
+    "reason": "See material outcomes; no publication performed"
+  }
+}

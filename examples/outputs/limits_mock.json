@@ -1,0 +1,18 @@
+{
+  "request_id": "req-normal",
+  "status": "incomplete",
+  "materials": [
+    {
+      "material_id": "M05",
+      "review_status": "insufficient_data",
+      "risk_reasons": [],
+      "requested_time": "2026-11-03T20:00:00+08:00",
+      "suggested_time": null,
+      "confirmation_items": [],
+      "draft_status": "not_saved",
+      "draft_id": null
+    }
+  ],
+  "published": false,
+  "reason": "max_steps limit reached"
+}

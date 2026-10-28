@@ -1,0 +1,49 @@
+{
+  "case_id": "req-normal",
+  "mode": "live",
+  "model": "gpt-4.1-mini",
+  "started_at": "2026-10-28T11:35:06.497170+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "action": "model_error",
+      "arguments": {},
+      "observation_summary": {
+        "error": "LLM HTTP 401; check endpoint, credentials and model"
+      },
+      "next_action": "model_error",
+      "decision_basis": ""
+    },
+    {
+      "step": 2,
+      "action": "model_error",
+      "arguments": {},
+      "observation_summary": {
+        "error": "LLM HTTP 401; check endpoint, credentials and model"
+      },
+      "next_action": null,
+      "decision_basis": ""
+    }
+  ],
+  "published": false,
+  "final_status": "incomplete",
+  "finished_at": "2026-10-28T11:35:19.362511+00:00",
+  "result": {
+    "request_id": "req-normal",
+    "status": "incomplete",
+    "materials": [
+      {
+        "material_id": "M05",
+        "review_status": "insufficient_data",
+        "risk_reasons": [],
+        "requested_time": "2026-11-03T20:00:00+08:00",
+        "suggested_time": null,
+        "confirmation_items": [],
+        "draft_status": "not_saved",
+        "draft_id": null
+      }
+    ],
+    "published": false,
+    "reason": "Model request/response failed: LLM HTTP 401; check endpoint, credentials and model"
+  }
+}

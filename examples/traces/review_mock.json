@@ -1,0 +1,94 @@
+{
+  "case_id": "req-review",
+  "mode": "mock",
+  "model": "deterministic-mock-no-LLM",
+  "started_at": "2026-10-28T11:37:55.332069+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "action": "get_material",
+      "arguments": {
+        "material_id": "M04"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "id": "M04",
+          "title": "Synthetic material 4",
+          "duration_seconds": 30,
+          "copyright_status": "cleared",
+          "sensitive_flags": [
+            "medical_claim"
+          ],
+          "review_notes": "Synthetic demo"
+        },
+        "error": null
+      },
+      "next_action": "check_rules",
+      "decision_basis": ""
+    },
+    {
+      "step": 2,
+      "action": "check_rules",
+      "arguments": {
+        "material_id": "M04"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "review_status": "review_required",
+          "risk_reasons": [
+            {
+              "rule_id": "R_SENSITIVE",
+              "reason": "Sensitive content requires human review"
+            }
+          ],
+          "missing_fields": []
+        },
+        "error": null
+      },
+      "next_action": "finish",
+      "decision_basis": ""
+    },
+    {
+      "step": 3,
+      "action": "finish",
+      "arguments": {
+        "decision_basis": "Deterministic mock policy finished from observed tool results"
+      },
+      "observation_summary": {
+        "ok": true
+      },
+      "next_action": null,
+      "decision_basis": "Deterministic mock policy finished from observed tool results"
+    }
+  ],
+  "published": false,
+  "final_status": "needs_confirmation",
+  "finished_at": "2026-10-28T11:37:55.335070+00:00",
+  "result": {
+    "request_id": "req-review",
+    "status": "needs_confirmation",
+    "materials": [
+      {
+        "material_id": "M04",
+        "review_status": "review_required",
+        "risk_reasons": [
+          {
+            "rule_id": "R_SENSITIVE",
+            "reason": "Sensitive content requires human review"
+          }
+        ],
+        "requested_time": "2026-11-03T20:00:00+08:00",
+        "suggested_time": null,
+        "confirmation_items": [
+          "Human risk review required"
+        ],
+        "draft_status": "not_saved",
+        "draft_id": null
+      }
+    ],
+    "published": false,
+    "reason": "See material outcomes; no publication performed"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "case_id": "req-missing",
+  "mode": "mock",
+  "model": "deterministic-mock-no-LLM",
+  "started_at": "2026-10-28T11:37:55.025081+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "action": "get_material",
+      "arguments": {
+        "material_id": "M02"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "id": "M02",
+          "title": "Synthetic material 2",
+          "duration_seconds": 30,
+          "copyright_status": null,
+          "sensitive_flags": [],
+          "review_notes": "Synthetic demo"
+        },
+        "error": null
+      },
+      "next_action": "check_rules",
+      "decision_basis": ""
+    },
+    {
+      "step": 2,
+      "action": "check_rules",
+      "arguments": {
+        "material_id": "M02"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "review_status": "insufficient_data",
+          "risk_reasons": [
+            {
+              "rule_id": "R_REQUIRED",
+              "reason": "Missing required metadata",
+              "fields": [
+                "copyright_status"
+              ]
+            }
+          ],
+          "missing_fields": [
+            "copyright_status"
+          ]
+        },
+        "error": null
+      },
+      "next_action": "get_material",
+      "decision_basis": ""
+    },
+    {
+      "step": 3,
+      "action": "get_material",
+      "arguments": {
+        "material_id": "M02"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "id": "M02",
+          "title": "Synthetic material 2",
+          "duration_seconds": 30,
+          "copyright_status": null,
+          "sensitive_flags": [],
+          "review_notes": "Synthetic demo"
+        },
+        "error": null
+      },
+      "next_action": "finish",
+      "decision_basis": ""
+    },
+    {
+      "step": 4,
+      "action": "finish",
+      "arguments": {
+        "decision_basis": "Deterministic mock policy finished from observed tool results"
+      },
+      "observation_summary": {
+        "ok": true
+      },
+      "next_action": null,
+      "decision_basis": "Deterministic mock policy finished from observed tool results"
+    }
+  ],
+  "published": false,
+  "final_status": "needs_information",
+  "finished_at": "2026-10-28T11:37:55.028594+00:00",
+  "result": {
+    "request_id": "req-missing",
+    "status": "needs_information",
+    "materials": [
+      {
+        "material_id": "M02",
+        "review_status": "insufficient_data",
+        "risk_reasons": [
+          {
+            "rule_id": "R_REQUIRED",
+            "reason": "Missing required metadata",
+            "fields": [
+              "copyright_status"
+            ]
+          }
+        ],
+        "requested_time": "2026-11-03T20:00:00+08:00",
+        "suggested_time": null,
+        "confirmation_items": [
+          "Supplement missing fields: copyright_status"
+        ],
+        "draft_status": "not_saved",
+        "draft_id": null
+      }
+    ],
+    "published": false,
+    "reason": "See material outcomes; no publication performed"
+  }
+}

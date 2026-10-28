@@ -1,0 +1,17 @@
+{
+  "required_fields": [
+    "title",
+    "duration_seconds",
+    "copyright_status"
+  ],
+  "copyright_rule": {
+    "id": "R_COPYRIGHT",
+    "blocked_value": "prohibited"
+  },
+  "sensitive_rule": {
+    "id": "R_SENSITIVE"
+  },
+  "missing_rule": "R_REQUIRED",
+  "slot_minutes": 60,
+  "candidate_step_minutes": 60
+}

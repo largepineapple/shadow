@@ -1,0 +1,44 @@
+[
+  {
+    "id": "M01",
+    "title": "Synthetic material 1",
+    "duration_seconds": 30,
+    "copyright_status": "cleared",
+    "sensitive_flags": [],
+    "review_notes": "Synthetic demo"
+  },
+  {
+    "id": "M02",
+    "title": "Synthetic material 2",
+    "duration_seconds": 30,
+    "copyright_status": null,
+    "sensitive_flags": [],
+    "review_notes": "Synthetic demo"
+  },
+  {
+    "id": "M03",
+    "title": "Synthetic material 3",
+    "duration_seconds": 30,
+    "copyright_status": "prohibited",
+    "sensitive_flags": [],
+    "review_notes": "Synthetic demo"
+  },
+  {
+    "id": "M04",
+    "title": "Synthetic material 4",
+    "duration_seconds": 30,
+    "copyright_status": "cleared",
+    "sensitive_flags": [
+      "medical_claim"
+    ],
+    "review_notes": "Synthetic demo"
+  },
+  {
+    "id": "M05",
+    "title": "Synthetic material 5",
+    "duration_seconds": 30,
+    "copyright_status": "cleared",
+    "sensitive_flags": [],
+    "review_notes": "Synthetic demo"
+  }
+]

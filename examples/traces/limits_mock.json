@@ -1,0 +1,50 @@
+{
+  "case_id": "req-normal",
+  "mode": "mock",
+  "model": "deterministic-mock-no-LLM",
+  "started_at": "2026-10-28T11:37:56.116951+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "action": "get_material",
+      "arguments": {
+        "material_id": "M05"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "id": "M05",
+          "title": "Synthetic material 5",
+          "duration_seconds": 30,
+          "copyright_status": "cleared",
+          "sensitive_flags": [],
+          "review_notes": "Synthetic demo"
+        },
+        "error": null
+      },
+      "next_action": null,
+      "decision_basis": ""
+    }
+  ],
+  "published": false,
+  "final_status": "incomplete",
+  "finished_at": "2026-10-28T11:37:56.121945+00:00",
+  "result": {
+    "request_id": "req-normal",
+    "status": "incomplete",
+    "materials": [
+      {
+        "material_id": "M05",
+        "review_status": "insufficient_data",
+        "risk_reasons": [],
+        "requested_time": "2026-11-03T20:00:00+08:00",
+        "suggested_time": null,
+        "confirmation_items": [],
+        "draft_status": "not_saved",
+        "draft_id": null
+      }
+    ],
+    "published": false,
+    "reason": "max_steps limit reached"
+  }
+}

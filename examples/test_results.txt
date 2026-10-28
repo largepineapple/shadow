@@ -1,0 +1,6 @@
+Command: python -m pytest -q
+Mode: mock/offline only
+........................                                                 [100%]
+24 passed in 0.31s
+
+Evidence runner elapsed_seconds: 2.361

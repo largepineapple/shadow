@@ -1,0 +1,12 @@
+{
+  "request_id": "req-confirmed_alternative",
+  "material_ids": [
+    "M01"
+  ],
+  "platform": "short_video",
+  "requested_time": "2026-11-03T18:00:00+08:00",
+  "time_requirement": "hard",
+  "timezone": "Asia/Shanghai",
+  "allow_alternative_suggestion": true,
+  "confirmed_alternative_time": "2026-11-03T19:00:00+08:00"
+}

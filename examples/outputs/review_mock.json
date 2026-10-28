@@ -1,0 +1,25 @@
+{
+  "request_id": "req-review",
+  "status": "needs_confirmation",
+  "materials": [
+    {
+      "material_id": "M04",
+      "review_status": "review_required",
+      "risk_reasons": [
+        {
+          "rule_id": "R_SENSITIVE",
+          "reason": "Sensitive content requires human review"
+        }
+      ],
+      "requested_time": "2026-11-03T20:00:00+08:00",
+      "suggested_time": null,
+      "confirmation_items": [
+        "Human risk review required"
+      ],
+      "draft_status": "not_saved",
+      "draft_id": null
+    }
+  ],
+  "published": false,
+  "reason": "See material outcomes; no publication performed"
+}
