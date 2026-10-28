@@ -1,6 +1,6 @@
 # 验收记录
 
-2026-10-28 实际运行，模式 mock，模型 deterministic-mock-no-LLM。最近全套结果：27 passed in 0.34s。命令与实际耗时见 [test_results](../examples/test_results.txt)。所有业务输出与 Trace 由程序自动生成；未手写成功日志。
+2026-10-28 实际运行，模式 mock，模型 deterministic-mock-no-LLM。最近提交前回归结果：31 passed in 0.47s（此前 DeepSeek 接入时为 27 项）。命令与实际耗时见 [test_results](../examples/test_results.txt)。所有业务输出与 Trace 由程序自动生成；未手写成功日志。
 
 | ID | 场景 | 实际结果 | 证据 |
 |---|---|---|---|
@@ -15,9 +15,9 @@
 | T09 | 候选再占用 | needs_confirmation / not_saved，建议20:00 | [输出](../examples/outputs/reoccupied_mock.json) / [Trace](../examples/traces/reoccupied_mock.json) |
 | T10 | 同ID不同内容 | REQUEST_CONTENT_CONFLICT；不覆盖 | `tests/test_tools.py::test_failure_and_content_conflict` |
 
-另有人工风险复核、未知素材、offset/时区校验、半开边界、批内冲突、soft 改期、禁止替代建议、并发重复保存、恶意 finish 不得伪造成功、无效模型动作有界重试等测试。pytest 使用临时 SQLite，每次证据运行使用新临时库，重复场景共享同一库验证既有 ID。源码编译检查 `python -m compileall -q src tests examples/run_offline.py` 通过。
+另有人工风险复核、未知素材、offset/时区校验、半开边界、批内冲突、soft 改期、禁止替代建议、并发重复保存、恶意 finish 不得伪造成功、无效模型动作有界重试等测试。pytest 使用临时 SQLite，每次证据运行使用新临时库，重复场景共享同一库验证既有 ID。源码编译检查 `python -m compileall -q src tests examples/run_offline.py examples/run_live.py` 通过。
 
-## 真实模型验收（2026-10-28）
+## 历史真实模型验收（2026-10-28，提交 5721eac）
 
 用户重新授权接入 DeepSeek。实际服务 https://api.deepseek.com，模型 deepseek-flash。执行 `python -m examples.run_live`，退出码 0，8/8 通过，默认 max_steps=8 / max_tool_calls=10，实际总耗时 204.743 秒。凭据仅经隐藏输入进入临时进程环境，运行后已清除并退出进程；文件扫描未发现本次密钥。
 
@@ -59,3 +59,20 @@ reoccupied 的 19:00 初始占位由本地工具显式准备（Trace fixture 标
 初次交付时尚无 Git 仓库；随后按用户要求创建 main 并推送 https://github.com/largepineapple/shadow，初始提交 a97806ed9d6d28bb216348699a4cb1a74da7010d。当前 DeepSeek 接入与验收记录形成后续提交，可用 git log 核实。
 
 仍待用户本人完成：个人贡献核实、实际投入时间、主观反思与最终评审权限确认。没有替用户捏造这些内容。运行耗时只代表自动验收脚本，不代表个人投入。工具预算和内容冲突等 T08/T10 的确定性测试已通过，本轮没有额外运行它们的 live 场景。
+
+## 提交前最终质量检查
+
+本轮保留既有 Agent Loop、工具契约、硬性规则和 SQLite 事务。仅在结果组装处增加每项 outcome_status，用服务端原有单项状态赋值；顶层仍为聚合摘要。确认来源已在 README、需求和方案中明确：confirmed_alternative_time 是可信外部 CLI 输入，不证明身份或同意真实性，当前不实现真实用户身份鉴权。
+
+实际重新运行 `python -m examples.run_offline`，退出码 0：11 组离线示例生成成功，并调用 `python -m pytest -q`，31 项通过，耗时 0.47 秒；整个证据脚本耗时 3.947 秒，见 examples/test_results.txt。新增测试覆盖已保存项与禁发/缺失/人工复核项混合、预算耗尽后部分完成；另在原有批内冲突测试验证各项 outcome_status。
+
+混合批次实际输入 [batch_mixed](../examples/inputs/batch_mixed.json)、[输出](../examples/outputs/batch_mixed_mock.json)、[Trace](../examples/traces/batch_mixed_mock.json)：顶层 blocked；M05 outcome_status=completed、draft_status=saved，M03 outcome_status=blocked、draft_status=not_saved。整体状态不代表所有素材均失败，也不回滚已保存项。
+
+历史 live 一致性检查：8/8 汇总记录逐条与输出、Trace、模型名、动作顺序及保存状态一致；normal/duplicate 草稿 ID 相同。Git diff 确认历史 live 文件未改动；本轮没有再次调用真实模型。5721eac 的历史输出尚无 outcome_status，原样保留，不事后补写新字段；新增字段由本轮离线测试与示例验证。历史 API 兼容性和模型效果的证据仅适用于当时版本与那些场景。
+
+文档相对文件链接检查、源码编译检查、git diff --check 均通过。README 与历史 DeepSeek 汇总的模型、场景数及状态相符。本轮全量检查确认，交付文档中实际待填写项只有以下两处；HANDOFF 原始规范中的 TODO 示例保持不变。以下内容应保留给候选人：
+
+- docs/04-ai-usage.md：本人真实代码修改、技术取舍、验证工作、实际投入时间与贡献记录。
+- docs/05-retrospective.md：本人理解、学到的内容、主观反思与实际投入时间。
+
+这两处是最终提交材料仍待本人完成的内容，没有代写个人经历或宣称它们已完成。项目不包含真实发布接口或生产身份鉴权；两者都是明确范围边界。

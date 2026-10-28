@@ -2,7 +2,7 @@
   "case_id": "req-conflict",
   "mode": "mock",
   "model": "deterministic-mock-no-LLM",
-  "started_at": "2026-10-28T11:58:05.319247+00:00",
+  "started_at": "2026-10-28T12:24:35.015565+00:00",
   "steps": [
     {
       "step": 1,
@@ -82,7 +82,7 @@
   ],
   "published": false,
   "final_status": "needs_confirmation",
-  "finished_at": "2026-10-28T11:58:05.321666+00:00",
+  "finished_at": "2026-10-28T12:24:35.020571+00:00",
   "result": {
     "request_id": "req-conflict",
     "status": "needs_confirmation",
@@ -98,7 +98,8 @@
         ],
         "draft_status": "not_saved",
         "draft_id": null,
-        "time_change_reason": "Original slot occupied or external alternative explicitly confirmed"
+        "time_change_reason": "Original slot occupied or external alternative explicitly confirmed",
+        "outcome_status": "needs_confirmation"
       }
     ],
     "published": false,

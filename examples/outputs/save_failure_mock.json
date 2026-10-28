@@ -12,7 +12,8 @@
         "SAVE_UNAVAILABLE: Injected storage failure"
       ],
       "draft_status": "failed",
-      "draft_id": null
+      "draft_id": null,
+      "outcome_status": "save_failed"
     }
   ],
   "published": false,

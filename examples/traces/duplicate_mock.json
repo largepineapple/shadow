@@ -2,7 +2,7 @@
   "case_id": "req-normal",
   "mode": "mock",
   "model": "deterministic-mock-no-LLM",
-  "started_at": "2026-10-28T11:58:04.917614+00:00",
+  "started_at": "2026-10-28T12:24:34.401331+00:00",
   "steps": [
     {
       "step": 1,
@@ -111,7 +111,7 @@
   ],
   "published": false,
   "final_status": "completed",
-  "finished_at": "2026-10-28T11:58:04.920615+00:00",
+  "finished_at": "2026-10-28T12:24:34.406327+00:00",
   "result": {
     "request_id": "req-normal",
     "status": "completed",
@@ -124,7 +124,8 @@
         "suggested_time": "2026-11-03T20:00:00+08:00",
         "confirmation_items": [],
         "draft_status": "existing",
-        "draft_id": 1
+        "draft_id": 1,
+        "outcome_status": "completed"
       }
     ],
     "published": false,

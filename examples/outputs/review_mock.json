@@ -17,7 +17,8 @@
         "Human risk review required"
       ],
       "draft_status": "not_saved",
-      "draft_id": null
+      "draft_id": null,
+      "outcome_status": "needs_confirmation"
     }
   ],
   "published": false,

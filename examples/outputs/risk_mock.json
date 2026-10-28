@@ -15,7 +15,8 @@
       "suggested_time": null,
       "confirmation_items": [],
       "draft_status": "not_saved",
-      "draft_id": null
+      "draft_id": null,
+      "outcome_status": "blocked"
     }
   ],
   "published": false,

@@ -20,7 +20,8 @@
         "Supplement missing fields: copyright_status"
       ],
       "draft_status": "not_saved",
-      "draft_id": null
+      "draft_id": null,
+      "outcome_status": "needs_information"
     }
   ],
   "published": false,

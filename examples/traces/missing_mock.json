@@ -2,7 +2,7 @@
   "case_id": "req-missing",
   "mode": "mock",
   "model": "deterministic-mock-no-LLM",
-  "started_at": "2026-10-28T11:58:03.682701+00:00",
+  "started_at": "2026-10-28T12:24:33.458892+00:00",
   "steps": [
     {
       "step": 1,
@@ -89,7 +89,7 @@
   ],
   "published": false,
   "final_status": "needs_information",
-  "finished_at": "2026-10-28T11:58:03.687908+00:00",
+  "finished_at": "2026-10-28T12:24:33.462877+00:00",
   "result": {
     "request_id": "req-missing",
     "status": "needs_information",
@@ -112,7 +112,8 @@
           "Supplement missing fields: copyright_status"
         ],
         "draft_status": "not_saved",
-        "draft_id": null
+        "draft_id": null,
+        "outcome_status": "needs_information"
       }
     ],
     "published": false,

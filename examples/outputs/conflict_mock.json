@@ -13,7 +13,8 @@
       ],
       "draft_status": "not_saved",
       "draft_id": null,
-      "time_change_reason": "Original slot occupied or external alternative explicitly confirmed"
+      "time_change_reason": "Original slot occupied or external alternative explicitly confirmed",
+      "outcome_status": "needs_confirmation"
     }
   ],
   "published": false,

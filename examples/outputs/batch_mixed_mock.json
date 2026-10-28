@@ -1,0 +1,35 @@
+{
+  "request_id": "req-batch-mixed",
+  "status": "blocked",
+  "materials": [
+    {
+      "material_id": "M05",
+      "review_status": "approved",
+      "risk_reasons": [],
+      "requested_time": "2026-11-03T20:00:00+08:00",
+      "suggested_time": "2026-11-03T20:00:00+08:00",
+      "confirmation_items": [],
+      "draft_status": "saved",
+      "draft_id": 1,
+      "outcome_status": "completed"
+    },
+    {
+      "material_id": "M03",
+      "review_status": "blocked",
+      "risk_reasons": [
+        {
+          "rule_id": "R_COPYRIGHT",
+          "reason": "Copyright prohibits scheduling"
+        }
+      ],
+      "requested_time": "2026-11-03T20:00:00+08:00",
+      "suggested_time": null,
+      "confirmation_items": [],
+      "draft_status": "not_saved",
+      "draft_id": null,
+      "outcome_status": "blocked"
+    }
+  ],
+  "published": false,
+  "reason": "See material outcomes; no publication performed"
+}

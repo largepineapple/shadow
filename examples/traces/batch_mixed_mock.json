@@ -1,0 +1,184 @@
+{
+  "case_id": "req-batch-mixed",
+  "mode": "mock",
+  "model": "deterministic-mock-no-LLM",
+  "started_at": "2026-10-28T12:24:35.259552+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "action": "get_material",
+      "arguments": {
+        "material_id": "M05"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "id": "M05",
+          "title": "Synthetic material 5",
+          "duration_seconds": 30,
+          "copyright_status": "cleared",
+          "sensitive_flags": [],
+          "review_notes": "Synthetic demo"
+        },
+        "error": null
+      },
+      "next_action": "check_rules",
+      "decision_basis": ""
+    },
+    {
+      "step": 2,
+      "action": "check_rules",
+      "arguments": {
+        "material_id": "M05"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "review_status": "approved",
+          "risk_reasons": [],
+          "missing_fields": []
+        },
+        "error": null
+      },
+      "next_action": "query_slots",
+      "decision_basis": ""
+    },
+    {
+      "step": 3,
+      "action": "query_slots",
+      "arguments": {
+        "platform": "short_video",
+        "requested_time": "2026-11-03T20:00:00+08:00"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "requested_time": "2026-11-03T20:00:00+08:00",
+          "available": true,
+          "alternatives": [
+            "2026-11-03T21:00:00+08:00",
+            "2026-11-03T22:00:00+08:00",
+            "2026-11-03T23:00:00+08:00"
+          ],
+          "existing_request_drafts": []
+        },
+        "error": null
+      },
+      "next_action": "save_draft",
+      "decision_basis": ""
+    },
+    {
+      "step": 4,
+      "action": "save_draft",
+      "arguments": {
+        "material_id": "M05",
+        "proposed_time": "2026-11-03T20:00:00+08:00"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "draft_status": "saved",
+          "draft_id": 1,
+          "proposed_time": "2026-11-03T20:00:00+08:00"
+        },
+        "error": null
+      },
+      "next_action": "get_material",
+      "decision_basis": ""
+    },
+    {
+      "step": 5,
+      "action": "get_material",
+      "arguments": {
+        "material_id": "M03"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "id": "M03",
+          "title": "Synthetic material 3",
+          "duration_seconds": 30,
+          "copyright_status": "prohibited",
+          "sensitive_flags": [],
+          "review_notes": "Synthetic demo"
+        },
+        "error": null
+      },
+      "next_action": "check_rules",
+      "decision_basis": ""
+    },
+    {
+      "step": 6,
+      "action": "check_rules",
+      "arguments": {
+        "material_id": "M03"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "review_status": "blocked",
+          "risk_reasons": [
+            {
+              "rule_id": "R_COPYRIGHT",
+              "reason": "Copyright prohibits scheduling"
+            }
+          ],
+          "missing_fields": []
+        },
+        "error": null
+      },
+      "next_action": "finish",
+      "decision_basis": ""
+    },
+    {
+      "step": 7,
+      "action": "finish",
+      "arguments": {
+        "decision_basis": "Deterministic mock policy finished from observed tool results"
+      },
+      "observation_summary": {
+        "ok": true
+      },
+      "next_action": null,
+      "decision_basis": "Deterministic mock policy finished from observed tool results"
+    }
+  ],
+  "published": false,
+  "final_status": "blocked",
+  "finished_at": "2026-10-28T12:24:35.268541+00:00",
+  "result": {
+    "request_id": "req-batch-mixed",
+    "status": "blocked",
+    "materials": [
+      {
+        "material_id": "M05",
+        "review_status": "approved",
+        "risk_reasons": [],
+        "requested_time": "2026-11-03T20:00:00+08:00",
+        "suggested_time": "2026-11-03T20:00:00+08:00",
+        "confirmation_items": [],
+        "draft_status": "saved",
+        "draft_id": 1,
+        "outcome_status": "completed"
+      },
+      {
+        "material_id": "M03",
+        "review_status": "blocked",
+        "risk_reasons": [
+          {
+            "rule_id": "R_COPYRIGHT",
+            "reason": "Copyright prohibits scheduling"
+          }
+        ],
+        "requested_time": "2026-11-03T20:00:00+08:00",
+        "suggested_time": null,
+        "confirmation_items": [],
+        "draft_status": "not_saved",
+        "draft_id": null,
+        "outcome_status": "blocked"
+      }
+    ],
+    "published": false,
+    "reason": "See material outcomes; no publication performed"
+  }
+}

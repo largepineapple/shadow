@@ -20,6 +20,7 @@ def run(tmp_path, name, failure=False, client=None, steps=8, calls=10, store=Non
 def test_scenarios(tmp_path,name,status):
     result,trace,store=run(tmp_path,name)
     assert result['status']==status
+    assert result['materials'][0]['outcome_status']==status
     assert result['published'] is False
     if name=='missing': assert sum(s['action']=='get_material' for s in trace.value['steps'])==2
     if name=='conflict':
@@ -102,5 +103,38 @@ def test_multi_material_serial_conflict(tmp_path):
     assert result['status']=='needs_confirmation'
     assert result['materials'][0]['draft_status']=='saved'
     assert result['materials'][1]['draft_status']=='not_saved'
+    assert result['materials'][0]['outcome_status']=='completed'
+    assert result['materials'][1]['outcome_status']=='needs_confirmation'
+    assert len(store.drafts())==1
+    store.close()
+
+
+@pytest.mark.parametrize('material_id,outcome',[
+    ('M03','blocked'), ('M02','needs_information'), ('M04','needs_confirmation'),
+])
+def test_mixed_batch_preserves_saved_outcome(tmp_path,material_id,outcome):
+    r=request('normal');r['material_ids']=['M05',material_id]
+    store=Storage(str(tmp_path/'mixed.sqlite'))
+    result=Agent(Tools(r,store),MockPolicy(r),Trace('mock','test','mixed')).run()
+    assert result['status']==outcome
+    saved,other=result['materials']
+    assert saved['outcome_status']=='completed'
+    assert saved['draft_status']=='saved'
+    assert saved['draft_id']==store.drafts()[0]['id']
+    assert other['outcome_status']==outcome
+    assert other['draft_status']=='not_saved'
+    assert len(store.drafts())==1
+    assert result['published'] is False
+    store.close()
+
+
+def test_budget_exhaustion_preserves_completed_item(tmp_path):
+    r=request('normal');r['material_ids']=['M05','M01']
+    store=Storage(str(tmp_path/'partial.sqlite'))
+    result=Agent(Tools(r,store),MockPolicy(r),Trace('mock','test','partial'),max_steps=4).run()
+    assert result['status']=='incomplete'
+    assert result['materials'][0]['outcome_status']=='completed'
+    assert result['materials'][0]['draft_status']=='saved'
+    assert result['materials'][1]['outcome_status']=='incomplete'
     assert len(store.drafts())==1
     store.close()

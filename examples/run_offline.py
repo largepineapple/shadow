@@ -11,7 +11,7 @@ import time
 def main():
     started=time.perf_counter()
     with tempfile.TemporaryDirectory() as directory:
-        for name in ['normal','missing','risk','review','conflict','confirmed_alternative','save_failure','duplicate','limits','reoccupied']:
+        for name in ['normal','missing','risk','review','conflict','confirmed_alternative','save_failure','duplicate','limits','reoccupied','batch_mixed']:
             source='normal' if name in ('duplicate','limits') else 'conflict' if name=='reoccupied' else name
             db=str(Path(directory)/('normal' if name=='duplicate' else name))
             if name=='reoccupied':

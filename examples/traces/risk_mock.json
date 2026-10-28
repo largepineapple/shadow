@@ -2,7 +2,7 @@
   "case_id": "req-risk",
   "mode": "mock",
   "model": "deterministic-mock-no-LLM",
-  "started_at": "2026-10-28T11:58:03.894549+00:00",
+  "started_at": "2026-10-28T12:24:33.661891+00:00",
   "steps": [
     {
       "step": 1,
@@ -63,7 +63,7 @@
   ],
   "published": false,
   "final_status": "blocked",
-  "finished_at": "2026-10-28T11:58:03.900088+00:00",
+  "finished_at": "2026-10-28T12:24:33.665888+00:00",
   "result": {
     "request_id": "req-risk",
     "status": "blocked",
@@ -81,7 +81,8 @@
         "suggested_time": null,
         "confirmation_items": [],
         "draft_status": "not_saved",
-        "draft_id": null
+        "draft_id": null,
+        "outcome_status": "blocked"
       }
     ],
     "published": false,

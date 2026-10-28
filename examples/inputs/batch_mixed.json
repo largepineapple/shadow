@@ -1,0 +1,13 @@
+{
+  "request_id": "req-batch-mixed",
+  "material_ids": [
+    "M05",
+    "M03"
+  ],
+  "platform": "short_video",
+  "requested_time": "2026-11-03T20:00:00+08:00",
+  "time_requirement": "hard",
+  "timezone": "Asia/Shanghai",
+  "allow_alternative_suggestion": true,
+  "confirmed_alternative_time": null
+}

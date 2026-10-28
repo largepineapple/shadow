@@ -29,3 +29,9 @@ flowchart LR
 ## DeepSeek 接入
 
 仍使用同一 LiveClient，通过 OPENAI_BASE_URL=https://api.deepseek.com 和 OPENAI_MODEL=deepseek-flash 接入。真实调用发现默认思考模式拒绝 tool_choice=required，针对该官方域名增加 thinking.type=disabled；不改变 mock，不以确定性策略替代模型动作。HTTP 错误保留最多 4096 字节的脱敏诊断，有界错误重试仍生效。examples/run_live.py 只负责准备初始数据、调用真实 Agent 与验收结果，不代替模型选择动作。
+
+## 确认来源与批次结果
+
+confirmed_alternative_time 是可信外部输入，不是生产级身份或授权凭证。CLI 操作者负责确认其来源；应用验证 proposed_time 与该值是否匹配，不验证输入人的身份、角色或同意真实性。真实用户身份鉴权不在本项目范围。模型无修改请求字段的工具权限。
+
+每项 outcome_status 直接取服务端已计算的单项结果，和 review_status、draft_status、draft_id 一起保留。顶层聚合优先级为 incomplete > save_failed > blocked > needs_information > needs_confirmation > completed；循环超限等强制状态覆盖摘要。多个素材逐个事务保存，整体阻断或 incomplete 不意味着之前成功项回滚。新增字段只在结果组装处赋值，不改变 Agent Loop、模型提示或工具接口。

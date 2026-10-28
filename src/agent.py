@@ -86,6 +86,7 @@ class Agent:
                     item['confirmation_items']=['Requested slot occupied; explicit user choice/confirmation required']
             if item['suggested_time'] and item['suggested_time'] != item['requested_time']:
                 item['time_change_reason']='Original slot occupied or external alternative explicitly confirmed'
+            item['outcome_status'] = state
             items.append(item)
             states.append(state)
         priority = ['incomplete','save_failed','blocked','needs_information','needs_confirmation','completed']
