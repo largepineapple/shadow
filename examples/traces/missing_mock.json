@@ -2,7 +2,7 @@
   "case_id": "req-missing",
   "mode": "mock",
   "model": "deterministic-mock-no-LLM",
-  "started_at": "2026-10-28T11:37:55.025081+00:00",
+  "started_at": "2026-10-28T11:58:03.682701+00:00",
   "steps": [
     {
       "step": 1,
@@ -89,7 +89,7 @@
   ],
   "published": false,
   "final_status": "needs_information",
-  "finished_at": "2026-10-28T11:37:55.028594+00:00",
+  "finished_at": "2026-10-28T11:58:03.687908+00:00",
   "result": {
     "request_id": "req-missing",
     "status": "needs_information",

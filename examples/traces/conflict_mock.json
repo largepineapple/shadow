@@ -2,7 +2,7 @@
   "case_id": "req-conflict",
   "mode": "mock",
   "model": "deterministic-mock-no-LLM",
-  "started_at": "2026-10-28T11:37:55.482490+00:00",
+  "started_at": "2026-10-28T11:58:04.322134+00:00",
   "steps": [
     {
       "step": 1,
@@ -82,7 +82,7 @@
   ],
   "published": false,
   "final_status": "needs_confirmation",
-  "finished_at": "2026-10-28T11:37:55.486012+00:00",
+  "finished_at": "2026-10-28T11:58:04.333198+00:00",
   "result": {
     "request_id": "req-conflict",
     "status": "needs_confirmation",

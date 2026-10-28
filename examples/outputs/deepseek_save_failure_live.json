@@ -1,0 +1,20 @@
+{
+  "request_id": "req-save_failure",
+  "status": "save_failed",
+  "materials": [
+    {
+      "material_id": "M05",
+      "review_status": "approved",
+      "risk_reasons": [],
+      "requested_time": "2026-11-03T20:00:00+08:00",
+      "suggested_time": null,
+      "confirmation_items": [
+        "SAVE_UNAVAILABLE: Injected storage failure"
+      ],
+      "draft_status": "failed",
+      "draft_id": null
+    }
+  ],
+  "published": false,
+  "reason": "See material outcomes; no publication performed"
+}

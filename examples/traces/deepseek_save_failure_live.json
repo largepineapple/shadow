@@ -1,0 +1,125 @@
+{
+  "case_id": "req-save_failure",
+  "mode": "live",
+  "model": "deepseek-flash",
+  "started_at": "2026-10-28T11:59:23.938370+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "action": "get_material",
+      "arguments": {
+        "material_id": "M05"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "id": "M05",
+          "title": "Synthetic material 5",
+          "duration_seconds": 30,
+          "copyright_status": "cleared",
+          "sensitive_flags": [],
+          "review_notes": "Synthetic demo"
+        },
+        "error": null
+      },
+      "next_action": "check_rules",
+      "decision_basis": ""
+    },
+    {
+      "step": 2,
+      "action": "check_rules",
+      "arguments": {
+        "material_id": "M05"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "review_status": "approved",
+          "risk_reasons": [],
+          "missing_fields": []
+        },
+        "error": null
+      },
+      "next_action": "query_slots",
+      "decision_basis": ""
+    },
+    {
+      "step": 3,
+      "action": "query_slots",
+      "arguments": {
+        "platform": "short_video",
+        "requested_time": "2026-11-03T20:00:00+08:00"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "requested_time": "2026-11-03T20:00:00+08:00",
+          "available": true,
+          "alternatives": [
+            "2026-11-03T21:00:00+08:00",
+            "2026-11-03T22:00:00+08:00",
+            "2026-11-03T23:00:00+08:00"
+          ],
+          "existing_request_drafts": []
+        },
+        "error": null
+      },
+      "next_action": "save_draft",
+      "decision_basis": ""
+    },
+    {
+      "step": 4,
+      "action": "save_draft",
+      "arguments": {
+        "material_id": "M05",
+        "proposed_time": "2026-11-03T20:00:00+08:00"
+      },
+      "observation_summary": {
+        "ok": false,
+        "data": null,
+        "error": {
+          "code": "SAVE_UNAVAILABLE",
+          "message": "Injected storage failure"
+        }
+      },
+      "next_action": "finish",
+      "decision_basis": ""
+    },
+    {
+      "step": 5,
+      "action": "finish",
+      "arguments": {
+        "decision_basis": "M05 metadata complete; rules say approved with no risk or missing fields. Slot 2026-11-03T20:00:00+08:00 available and no existing drafts. save_draft failed with SAVE_UNAVAILABLE (storage failure), so no draft was created; request remains unsaved and needs retry."
+      },
+      "observation_summary": {
+        "ok": true
+      },
+      "next_action": null,
+      "decision_basis": "M05 metadata complete; rules say approved with no risk or missing fields. Slot 2026-11-03T20:00:00+08:00 available and no existing drafts. save_draft failed with SAVE_UNAVAILABLE (storage failure), so no draft was created; request remains unsaved and needs retry."
+    }
+  ],
+  "published": false,
+  "acceptance_case": "save_failure",
+  "final_status": "save_failed",
+  "finished_at": "2026-10-28T11:59:52.237417+00:00",
+  "result": {
+    "request_id": "req-save_failure",
+    "status": "save_failed",
+    "materials": [
+      {
+        "material_id": "M05",
+        "review_status": "approved",
+        "risk_reasons": [],
+        "requested_time": "2026-11-03T20:00:00+08:00",
+        "suggested_time": null,
+        "confirmation_items": [
+          "SAVE_UNAVAILABLE: Injected storage failure"
+        ],
+        "draft_status": "failed",
+        "draft_id": null
+      }
+    ],
+    "published": false,
+    "reason": "See material outcomes; no publication performed"
+  }
+}

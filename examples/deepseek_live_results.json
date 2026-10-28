@@ -1,0 +1,183 @@
+{
+  "mode": "live",
+  "model": "deepseek-flash",
+  "endpoint": "https://api.deepseek.com",
+  "cases": [
+    {
+      "name": "normal",
+      "status": "completed",
+      "draft_status": "saved",
+      "db_count": 1,
+      "checks": {
+        "status": true,
+        "draft_status": true,
+        "db_count": true,
+        "not_published": true,
+        "real_loop": true
+      },
+      "passed": true,
+      "elapsed_seconds": 28.625,
+      "actions": [
+        "get_material",
+        "check_rules",
+        "query_slots",
+        "save_draft",
+        "finish"
+      ]
+    },
+    {
+      "name": "missing",
+      "status": "needs_information",
+      "draft_status": "not_saved",
+      "db_count": 0,
+      "checks": {
+        "status": true,
+        "draft_status": true,
+        "db_count": true,
+        "not_published": true,
+        "real_loop": true,
+        "active_lookup": true
+      },
+      "passed": true,
+      "elapsed_seconds": 22.783,
+      "actions": [
+        "get_material",
+        "check_rules",
+        "get_material",
+        "finish"
+      ]
+    },
+    {
+      "name": "risk",
+      "status": "blocked",
+      "draft_status": "not_saved",
+      "db_count": 0,
+      "checks": {
+        "status": true,
+        "draft_status": true,
+        "db_count": true,
+        "not_published": true,
+        "real_loop": true
+      },
+      "passed": true,
+      "elapsed_seconds": 22.464,
+      "actions": [
+        "model_error",
+        "get_material",
+        "check_rules",
+        "finish"
+      ]
+    },
+    {
+      "name": "conflict",
+      "status": "needs_confirmation",
+      "draft_status": "not_saved",
+      "db_count": 0,
+      "checks": {
+        "status": true,
+        "draft_status": true,
+        "db_count": true,
+        "not_published": true,
+        "real_loop": true,
+        "alternative": true
+      },
+      "passed": true,
+      "elapsed_seconds": 22.624,
+      "actions": [
+        "get_material",
+        "check_rules",
+        "query_slots",
+        "finish"
+      ]
+    },
+    {
+      "name": "confirmed_alternative",
+      "status": "completed",
+      "draft_status": "saved",
+      "db_count": 1,
+      "checks": {
+        "status": true,
+        "draft_status": true,
+        "db_count": true,
+        "not_published": true,
+        "real_loop": true
+      },
+      "passed": true,
+      "elapsed_seconds": 28.184,
+      "actions": [
+        "get_material",
+        "check_rules",
+        "query_slots",
+        "save_draft",
+        "finish"
+      ]
+    },
+    {
+      "name": "duplicate",
+      "status": "completed",
+      "draft_status": "existing",
+      "db_count": 1,
+      "checks": {
+        "status": true,
+        "draft_status": true,
+        "db_count": true,
+        "not_published": true,
+        "real_loop": true
+      },
+      "passed": true,
+      "elapsed_seconds": 28.256,
+      "actions": [
+        "get_material",
+        "check_rules",
+        "query_slots",
+        "save_draft",
+        "finish"
+      ]
+    },
+    {
+      "name": "save_failure",
+      "status": "save_failed",
+      "draft_status": "failed",
+      "db_count": 0,
+      "checks": {
+        "status": true,
+        "draft_status": true,
+        "db_count": true,
+        "not_published": true,
+        "real_loop": true
+      },
+      "passed": true,
+      "elapsed_seconds": 28.302,
+      "actions": [
+        "get_material",
+        "check_rules",
+        "query_slots",
+        "save_draft",
+        "finish"
+      ]
+    },
+    {
+      "name": "reoccupied",
+      "status": "needs_confirmation",
+      "draft_status": "not_saved",
+      "db_count": 1,
+      "checks": {
+        "status": true,
+        "draft_status": true,
+        "db_count": true,
+        "not_published": true,
+        "real_loop": true,
+        "alternative": true
+      },
+      "passed": true,
+      "elapsed_seconds": 23.389,
+      "actions": [
+        "get_material",
+        "check_rules",
+        "query_slots",
+        "finish"
+      ]
+    }
+  ],
+  "elapsed_seconds": 204.743
+}

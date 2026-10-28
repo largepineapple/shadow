@@ -2,7 +2,7 @@
   "case_id": "req-review",
   "mode": "mock",
   "model": "deterministic-mock-no-LLM",
-  "started_at": "2026-10-28T11:37:55.332069+00:00",
+  "started_at": "2026-10-28T11:58:04.125045+00:00",
   "steps": [
     {
       "step": 1,
@@ -65,7 +65,7 @@
   ],
   "published": false,
   "final_status": "needs_confirmation",
-  "finished_at": "2026-10-28T11:37:55.335070+00:00",
+  "finished_at": "2026-10-28T11:58:04.132209+00:00",
   "result": {
     "request_id": "req-review",
     "status": "needs_confirmation",

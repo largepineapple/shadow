@@ -25,3 +25,7 @@ flowchart LR
 已有排期/草稿均用 UTC aware datetime 比较 [start,end)，展示转换到输入 IANA 时区。每素材 60 分钟是明确合成假设。候选扫描最多 48 步，是 demo 的搜索上限，可进一步引入营业日历。
 
 模型返回格式严格校验，未知工具、错参数均拒绝或产生结构化失败。两次模型调用/格式错误即 incomplete；工具异常结构化返回以供模型调整。8 轮/10 工具默认上限，可 CLI 调整。保存故障显式注入，绝不修改真实回执。标准库 HTTP 降低依赖，pytest 做验收，tzdata 支持 Windows。
+
+## DeepSeek 接入
+
+仍使用同一 LiveClient，通过 OPENAI_BASE_URL=https://api.deepseek.com 和 OPENAI_MODEL=deepseek-flash 接入。真实调用发现默认思考模式拒绝 tool_choice=required，针对该官方域名增加 thinking.type=disabled；不改变 mock，不以确定性策略替代模型动作。HTTP 错误保留最多 4096 字节的脱敏诊断，有界错误重试仍生效。examples/run_live.py 只负责准备初始数据、调用真实 Agent 与验收结果，不代替模型选择动作。

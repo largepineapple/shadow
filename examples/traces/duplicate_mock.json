@@ -2,7 +2,7 @@
   "case_id": "req-normal",
   "mode": "mock",
   "model": "deterministic-mock-no-LLM",
-  "started_at": "2026-10-28T11:37:55.956376+00:00",
+  "started_at": "2026-10-28T11:58:04.917614+00:00",
   "steps": [
     {
       "step": 1,
@@ -111,7 +111,7 @@
   ],
   "published": false,
   "final_status": "completed",
-  "finished_at": "2026-10-28T11:37:55.959382+00:00",
+  "finished_at": "2026-10-28T11:58:04.920615+00:00",
   "result": {
     "request_id": "req-normal",
     "status": "completed",

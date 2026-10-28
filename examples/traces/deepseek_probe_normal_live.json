@@ -1,0 +1,50 @@
+{
+  "case_id": "req-normal",
+  "mode": "live",
+  "model": "deepseek-flash",
+  "started_at": "2026-10-28T11:56:02.412064+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "action": "model_error",
+      "arguments": {},
+      "observation_summary": {
+        "error": "LLM HTTP 400: {\"error\":{\"message\":\"Thinking mode does not support this tool_choice (request_id: 56b912c5-9210-464c-a4d6-3d6296243ef9)\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+      },
+      "next_action": "model_error",
+      "decision_basis": ""
+    },
+    {
+      "step": 2,
+      "action": "model_error",
+      "arguments": {},
+      "observation_summary": {
+        "error": "LLM HTTP 400: {\"error\":{\"message\":\"Thinking mode does not support this tool_choice (request_id: cfd60207-8d54-4941-af66-602694c70fd6)\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+      },
+      "next_action": null,
+      "decision_basis": ""
+    }
+  ],
+  "published": false,
+  "acceptance_case": "normal",
+  "final_status": "incomplete",
+  "finished_at": "2026-10-28T11:56:12.236896+00:00",
+  "result": {
+    "request_id": "req-normal",
+    "status": "incomplete",
+    "materials": [
+      {
+        "material_id": "M05",
+        "review_status": "insufficient_data",
+        "risk_reasons": [],
+        "requested_time": "2026-11-03T20:00:00+08:00",
+        "suggested_time": null,
+        "confirmation_items": [],
+        "draft_status": "not_saved",
+        "draft_id": null
+      }
+    ],
+    "published": false,
+    "reason": "Model request/response failed: LLM HTTP 400: {\"error\":{\"message\":\"Thinking mode does not support this tool_choice (request_id: cfd60207-8d54-4941-af66-602694c70fd6)\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+  }
+}

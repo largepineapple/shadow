@@ -1,0 +1,27 @@
+{
+  "mode": "live",
+  "model": "deepseek-flash",
+  "endpoint": "https://api.deepseek.com",
+  "cases": [
+    {
+      "name": "normal",
+      "status": "incomplete",
+      "draft_status": "not_saved",
+      "db_count": 0,
+      "checks": {
+        "status": false,
+        "draft_status": false,
+        "db_count": false,
+        "not_published": true,
+        "real_loop": false
+      },
+      "passed": false,
+      "elapsed_seconds": 9.827,
+      "actions": [
+        "model_error",
+        "model_error"
+      ]
+    }
+  ],
+  "elapsed_seconds": 9.854
+}

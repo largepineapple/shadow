@@ -1,0 +1,21 @@
+{
+  "request_id": "req-conflict",
+  "status": "needs_confirmation",
+  "materials": [
+    {
+      "material_id": "M01",
+      "review_status": "approved",
+      "risk_reasons": [],
+      "requested_time": "2026-11-03T18:00:00+08:00",
+      "suggested_time": "2026-11-03T19:00:00+08:00",
+      "confirmation_items": [
+        "Requested slot occupied; explicit user choice/confirmation required"
+      ],
+      "draft_status": "not_saved",
+      "draft_id": null,
+      "time_change_reason": "Original slot occupied or external alternative explicitly confirmed"
+    }
+  ],
+  "published": false,
+  "reason": "See material outcomes; no publication performed"
+}

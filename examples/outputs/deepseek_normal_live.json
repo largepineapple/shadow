@@ -1,0 +1,18 @@
+{
+  "request_id": "req-normal",
+  "status": "completed",
+  "materials": [
+    {
+      "material_id": "M05",
+      "review_status": "approved",
+      "risk_reasons": [],
+      "requested_time": "2026-11-03T20:00:00+08:00",
+      "suggested_time": "2026-11-03T20:00:00+08:00",
+      "confirmation_items": [],
+      "draft_status": "saved",
+      "draft_id": 1
+    }
+  ],
+  "published": false,
+  "reason": "Local draft operation completed; nothing published"
+}

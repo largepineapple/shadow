@@ -1,0 +1,110 @@
+{
+  "case_id": "req-conflict",
+  "mode": "live",
+  "model": "deepseek-flash",
+  "started_at": "2026-10-28T11:59:52.270682+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "action": "get_material",
+      "arguments": {
+        "material_id": "M01"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "id": "M01",
+          "title": "Synthetic material 1",
+          "duration_seconds": 30,
+          "copyright_status": "cleared",
+          "sensitive_flags": [],
+          "review_notes": "Synthetic demo"
+        },
+        "error": null
+      },
+      "next_action": "check_rules",
+      "decision_basis": ""
+    },
+    {
+      "step": 2,
+      "action": "check_rules",
+      "arguments": {
+        "material_id": "M01"
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "review_status": "approved",
+          "risk_reasons": [],
+          "missing_fields": []
+        },
+        "error": null
+      },
+      "next_action": "query_slots",
+      "decision_basis": ""
+    },
+    {
+      "step": 3,
+      "action": "query_slots",
+      "arguments": {
+        "platform": "short_video",
+        "requested_time": "2026-11-03T18:00:00+08:00",
+        "candidate_count": 3
+      },
+      "observation_summary": {
+        "ok": true,
+        "data": {
+          "requested_time": "2026-11-03T18:00:00+08:00",
+          "available": false,
+          "alternatives": [
+            "2026-11-03T20:00:00+08:00",
+            "2026-11-03T21:00:00+08:00",
+            "2026-11-03T22:00:00+08:00"
+          ],
+          "existing_request_drafts": []
+        },
+        "error": null
+      },
+      "next_action": "finish",
+      "decision_basis": ""
+    },
+    {
+      "step": 4,
+      "action": "finish",
+      "arguments": {
+        "decision_basis": "M01 approved by rules with no missing fields. Requested hard time 2026-11-03T18:00:00+08:00 on short_video is occupied; no confirmed alternative time was provided and no draft existed, so no draft was saved. Alternatives exist (20:00, 21:00, 22:00 +08:00) but a hard-time change requires externally confirmed alternative time."
+      },
+      "observation_summary": {
+        "ok": true
+      },
+      "next_action": null,
+      "decision_basis": "M01 approved by rules with no missing fields. Requested hard time 2026-11-03T18:00:00+08:00 on short_video is occupied; no confirmed alternative time was provided and no draft existed, so no draft was saved. Alternatives exist (20:00, 21:00, 22:00 +08:00) but a hard-time change requires externally confirmed alternative time."
+    }
+  ],
+  "published": false,
+  "acceptance_case": "reoccupied",
+  "fixture": "Local deterministic fixture occupies 19:00 before the live run",
+  "final_status": "needs_confirmation",
+  "finished_at": "2026-10-28T12:00:15.656199+00:00",
+  "result": {
+    "request_id": "req-conflict",
+    "status": "needs_confirmation",
+    "materials": [
+      {
+        "material_id": "M01",
+        "review_status": "approved",
+        "risk_reasons": [],
+        "requested_time": "2026-11-03T18:00:00+08:00",
+        "suggested_time": "2026-11-03T20:00:00+08:00",
+        "confirmation_items": [
+          "Requested slot occupied; explicit user choice/confirmation required"
+        ],
+        "draft_status": "not_saved",
+        "draft_id": null,
+        "time_change_reason": "Original slot occupied or external alternative explicitly confirmed"
+      }
+    ],
+    "published": false,
+    "reason": "See material outcomes; no publication performed"
+  }
+}

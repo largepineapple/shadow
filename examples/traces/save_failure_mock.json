@@ -2,7 +2,7 @@
   "case_id": "req-save_failure",
   "mode": "mock",
   "model": "deterministic-mock-no-LLM",
-  "started_at": "2026-10-28T11:37:55.790650+00:00",
+  "started_at": "2026-10-28T11:58:04.740070+00:00",
   "steps": [
     {
       "step": 1,
@@ -100,7 +100,7 @@
   ],
   "published": false,
   "final_status": "save_failed",
-  "finished_at": "2026-10-28T11:37:55.795158+00:00",
+  "finished_at": "2026-10-28T11:58:04.744061+00:00",
   "result": {
     "request_id": "req-save_failure",
     "status": "save_failed",

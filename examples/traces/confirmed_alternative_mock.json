@@ -2,7 +2,7 @@
   "case_id": "req-confirmed_alternative",
   "mode": "mock",
   "model": "deterministic-mock-no-LLM",
-  "started_at": "2026-10-28T11:37:55.630618+00:00",
+  "started_at": "2026-10-28T11:58:04.514021+00:00",
   "steps": [
     {
       "step": 1,
@@ -101,7 +101,7 @@
   ],
   "published": false,
   "final_status": "completed",
-  "finished_at": "2026-10-28T11:37:55.637130+00:00",
+  "finished_at": "2026-10-28T11:58:04.523067+00:00",
   "result": {
     "request_id": "req-confirmed_alternative",
     "status": "completed",

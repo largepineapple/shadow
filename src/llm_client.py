@@ -1,7 +1,9 @@
 import json
 import os
+import re
 import urllib.request
 import urllib.error
+from urllib.parse import urlparse
 
 TOOL_PARAMETERS = {
  'get_material': {'material_id': {'type': 'string'}},
@@ -27,12 +29,17 @@ class LiveClient:
             required = list(props) if name != 'query_slots' else ['platform','requested_time']
             schemas.append({'type':'function','function':{'name':name,'description':name.replace('_',' '),'parameters':{'type':'object','properties':props,'required':required,'additionalProperties':False}}})
         body = {'model':self.model,'messages':messages,'tools':schemas,'tool_choice':'required','parallel_tool_calls':False}
+        # DeepSeek thinking mode rejects tool_choice=required; use non-thinking tool calls.
+        if urlparse(self.base).hostname == 'api.deepseek.com':
+            body['thinking'] = {'type': 'disabled'}
         req = urllib.request.Request(self.base+'/chat/completions', data=json.dumps(body).encode(), headers={'Authorization':'Bearer '+self.key,'Content-Type':'application/json'})
         try:
             with urllib.request.urlopen(req, timeout=45) as response:
                 payload = json.load(response)
         except urllib.error.HTTPError as exc:
-            raise RuntimeError(f'LLM HTTP {exc.code}; check endpoint, credentials and model') from None
+            detail = exc.read(4096).decode('utf-8', errors='replace')
+            detail = re.sub(r'sk-[A-Za-z0-9_-]+', '[REDACTED]', detail.replace(self.key, '[REDACTED]'))
+            raise RuntimeError(f'LLM HTTP {exc.code}: {detail}') from None
         except urllib.error.URLError:
             raise RuntimeError('LLM network connection failed') from None
         calls = payload['choices'][0]['message'].get('tool_calls', [])
